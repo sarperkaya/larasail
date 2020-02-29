@@ -18,7 +18,7 @@ echo "alias larasail='sh /etc/.larasail/larasail'" >> /etc/bash.bashrc
 
 # Create a new password and create our new larasail user
 PASS=$(openssl rand -base64 32)
-useradd -G sudo -d /home/larasail -p $PASS -m larasail
+useradd -G sudo -d /home/larasail -b /home/larasail -p $PASS -m larasail
 
 
 # Give the larasail user ability to not always require password
@@ -46,7 +46,7 @@ sudo chown -R larasail:larasail /etc/.larasail/tmp
 
 
 # Add larasail alias to larasail bashrc and the bin path dir for composer
-echo "alias larasail='bash /etc/.larasail/larasail'" >> /home/larasail/.bashrc
+echo "alias larasail='sh /etc/.larasail/larasail'" >> /home/larasail/.bashrc
 echo "export PATH=~/.composer/vendor/bin:\$PATH" >> /home/larasail/.bashrc
 
 
@@ -59,3 +59,4 @@ barNoColor
 
 # Remove larasail folder pulled from git repo and switch user to larasail
 rm -rf larasail-master
+su - larasail
