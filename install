@@ -46,7 +46,7 @@ sudo chown -R larasail:larasail /etc/.larasail/tmp
 
 
 # Add larasail alias to larasail bashrc and the bin path dir for composer
-echo "alias larasail='sh /etc/.larasail/larasail'" >> /home/larasail/.bashrc
+echo "alias larasail='bash /etc/.larasail/larasail'" >> /home/larasail/.bashrc
 echo "export PATH=~/.composer/vendor/bin:\$PATH" >> /home/larasail/.bashrc
 
 
