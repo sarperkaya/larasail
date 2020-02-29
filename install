@@ -60,4 +60,3 @@ barNoColor
 # Remove larasail folder pulled from git repo and switch user to larasail
 rm -rf larasail-master
 su - larasail
-bash
