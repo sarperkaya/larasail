@@ -89,3 +89,9 @@ su - larasail
 ```
 
 Make sure to star this repo and watch this repo for future updates. Thanks for checking out Larasail ⛵
+
+## First Deploy Permissions
+```
+sudo chgrp -R www-data storage bootstrap/cache
+sudo chmod -R ug+rwx storage bootstrap/cache
+```
