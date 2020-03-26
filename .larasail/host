@@ -81,7 +81,7 @@ configName=$domain
 
 if ! echo "server {
 
-        root $rootPath/public;
+        root $rootPath/current/public;
 
         index index.php index.html index.htm;
 
