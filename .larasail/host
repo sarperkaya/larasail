@@ -54,19 +54,6 @@ if [ "$rootPath" = "" ]; then
 	rootPath=$serverRoot$domain
 fi
 
-if ! [ -d $sslPath ]; then
-	mkdir $sslPath
-	chmod 755 $sslPath
-	if ! echo "Hello World!" > $sslPath/cert.pem
-	then
-		red "ERROR: Not able to write in file $sslPath/cert.pem Please check permissions."
-		exit;
-	else
-		echo "Added file to $sslPath/cert.pem"
-	fi
-	echo "Hello World!" > $sslPath/key.pem
-fi
-
 if ! [ -d $rootPath ]; then
 	mkdir $rootPath
 	chmod 755 $rootPath
