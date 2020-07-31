@@ -98,7 +98,7 @@ if ! echo "server {
         listen 80;
         listen [::]:80;
         server_name $domain www.$domain;
-        return 302 https://$server_name$request_uri;
+        return 302 https://$domain\$request_uri;
     }
 
     server {
