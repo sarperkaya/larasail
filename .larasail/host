@@ -36,6 +36,7 @@ rootPath=$2
 sitesEnable='/etc/nginx/sites-enabled/'
 sitesAvailable='/etc/nginx/sites-available/'
 serverRoot='/var/www/'
+sslPath='/etc/ssl'
 
 while [ "$domain" = "" ]
 do
@@ -51,6 +52,19 @@ fi
 
 if [ "$rootPath" = "" ]; then
 	rootPath=$serverRoot$domain
+fi
+
+if ! [ -d $sslPath ]; then
+	mkdir $sslPath
+	chmod 755 $sslPath
+	if ! echo "Hello World!" > $sslPath/cert.pem
+	then
+		red "ERROR: Not able to write in file $sslPath/cert.pem Please check permissions."
+		exit;
+	else
+		echo "Added file to $sslPath/cert.pem"
+	fi
+	echo "Hello World!" > $sslPath/key.pem
 fi
 
 if ! [ -d $rootPath ]; then
@@ -80,6 +94,20 @@ fi
 configName=$domain
 
 if ! echo "server {
+
+        listen 80;
+        listen [::]:80;
+        server_name $domain www.$domain;
+        return 302 https://$server_name$request_uri;
+    }
+
+    server {
+
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+	ssl        on;
+	ssl_certificate         /etc/ssl/cert.pem;
+	ssl_certificate_key     /etc/ssl/key.pem;
 
         root $rootPath/current/public;
 
