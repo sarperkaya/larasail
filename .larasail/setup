@@ -12,7 +12,7 @@
 . /etc/.larasail/includes/colors
 . /etc/.larasail/includes/format
 
-PHP="7.3"
+PHP="8.0"
 
 setsail
 
@@ -74,6 +74,8 @@ sudo apt-get -y install libmcrypt-dev
 sudo apt-get install -y php
 sudo apt-get install -y php7.3-mcrypt
 sudo apt-get install -y php$PHP php$PHP-common php$PHP-mysql php$PHP-gd php$PHP-mysql php$PHP-curl php$PHP-mbstring php$PHP-xml php$PHP-zip php$PHP-fpm curl git
+
+sudo apt-get install acl
 
 sudo rm /usr/bin/php
 sudo ln -s /usr/bin/php$PHP /usr/bin/php
