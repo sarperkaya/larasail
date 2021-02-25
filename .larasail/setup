@@ -12,7 +12,7 @@
 . /etc/.larasail/includes/colors
 . /etc/.larasail/includes/format
 
-PHP="8.0"
+PHP="7.4"
 
 setsail
 
