@@ -92,7 +92,6 @@ if ! echo "server {
 
 	listen 443 ssl http2;
 	listen [::]:443 ssl http2;
-	ssl        on;
 	ssl_certificate         /etc/ssl/cert.pem;
 	ssl_certificate_key     /etc/ssl/key.pem;
 
@@ -101,6 +100,7 @@ if ! echo "server {
         index index.php index.html index.htm;
 
         server_name $domain;
+	rewrite ^/(.*)/$ /$1 permanent;
 
         location / {
                 try_files \$uri \$uri/ /index.php?\$query_string;
